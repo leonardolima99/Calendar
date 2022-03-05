@@ -62,3 +62,22 @@ body {
 .day[data-unfocused="true"] {
   background-color: rgba(137, 43, 226, 0.644);
 }
+
+.display-month {
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-month {
+  color: #333;
+  font-size: 16pt;
+}
+
+.button-back-month,
+.button-next-month {
+  padding: 0 24px;
+  font-size: 24px;
+}
