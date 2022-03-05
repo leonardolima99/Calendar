@@ -1,6 +1,7 @@
 const calendar = document.querySelector(".calendar");
 
-const date = new Date();
+//const date = new Date();
+const date = new Date("06-08-2021");
 
 const weeks = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
 
@@ -25,8 +26,9 @@ calendar.appendChild(weeksDiv);
 let arrayMonth = [];
 
 // Cria variável auxiliar para manipular a data
+console.log("s1", date.getMonth());
 let date2 = date;
-
+console.log("s", date2.getMonth());
 // pega o último dia do mes atual
 // E guarda em lastDay
 date2.setMonth(date2.getMonth() + 1);
@@ -41,10 +43,11 @@ const handlePopulateArrayDate = (arrayMonth, currentDay) => {
   // adiciona o dia com mês e semana no array
   arrayMonth.push({
     day: currentDay.getDate(),
-    month: currentDay.getMonth(),
     week: currentDay.getDay(),
+    month: currentDay.getMonth(),
+    year: currentDay.getFullYear(),
   });
-  console.log(currentDay, lastDay);
+
   currentDay = new Date(currentDay.setDate(currentDay.getDate() + 1));
 };
 
@@ -54,22 +57,25 @@ if (date2.getDay() + 1 > date2.getDate()) {
 
   // define o dia para o primeiro dia dessa semana
   date2.setDate(date2.getDate() - date2.getDay());
-  let currentDay = date2;
-  console.log("4");
+}
+let currentDay = date2;
+console.log("4");
 
-  console.log(currentDay <= lastDay);
-  console.log("5");
+console.log(currentDay <= lastDay);
+console.log("5");
 
-  while (currentDay <= lastDay) {
-    handlePopulateArrayDate(arrayMonth, currentDay);
-  }
+while (currentDay <= lastDay) {
+  handlePopulateArrayDate(arrayMonth, currentDay);
+}
 
+console.log(currentDay.getDay());
+if (currentDay.getDay() !== 0) {
   for (let i = currentDay.getDay(); i <= 6; i++) {
     handlePopulateArrayDate(arrayMonth, currentDay);
   }
-
-  console.log("array ", arrayMonth);
 }
+
+console.log("array ", arrayMonth);
 
 const days = document.createElement("div");
 days.classList.add("days");
@@ -77,6 +83,12 @@ days.classList.add("days");
 for (const item of arrayMonth) {
   const day = document.createElement("div");
   day.classList.add("day");
+  day.dataset.day = item.day;
+  day.dataset.month = item.month;
+  day.dataset.year = item.year;
+  if (date.getMonth() !== item.month + 1) {
+    day.dataset.unfocused = true;
+  }
   day.innerHTML = item.day;
   days.appendChild(day);
 }
