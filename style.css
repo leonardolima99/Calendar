@@ -1,0 +1,59 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+.main {
+  display: flex;
+  background-color: aliceblue;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar {
+  width: 600px;
+  height: 450px;
+  background-color: blueviolet;
+  border: 1px solid #fff;
+}
+
+.weeks {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  background-color: aqua;
+}
+
+.week {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 1fr 1fr 1fr;
+  border: 1px solid #fff;
+}
+
+.day {
+  height: 70px;
+  border: 1px solid #fff;
+  color: #fff;
+  font-size: 18pt;
+  font-family: sans-serif;
+  text-align: center;
+  line-height: 70px;
+}
